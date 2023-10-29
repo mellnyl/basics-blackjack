@@ -111,7 +111,7 @@ var main = function (input) {
 
     if (compCardSum == 21) {
       currentGameMode = 'Game over';
-      return `Computer's cards: ${printCardArray(compCard)}. <br>
+      return `Computer's cards: ${printCardArray(playerCard)}. <br>
       Computer won with a Blackjack! 😪<br>
       Refresh for another round!`;
 
