@@ -111,21 +111,21 @@ var main = function (input) {
 
     if (compCardSum == 21) {
       currentGameMode = 'Game over';
-      return `Cmputer's cards: ${printCardArray(compCard)}. <br>
-      Computer won with a Blackjack! <br>
+      return `Computer's cards: ${printCardArray(compCard)}. <br>
+      Computer won with a Blackjack! 😪<br>
       Refresh for another round!`;
 
     } else if (playerCardSum == 21) {
       currentGameMode = 'Game over';
       return `Your cards: ${printCardArray(compCard)}. <br>
-      You win with a Blackjack! <br>
+      You win with a Blackjack! 👏🏻<br>
       Refresh for another round!`
 
     } else {
       currentGameMode = 'Player move';
       return `Your cards: ${printCardArray(playerCard)}, summing to ${playerCardSum}. <br>
-      Computer's cards: ${printCardArray(compCard)}, summing to ${compCardSum}. <br>
-      Enter 'hit' or 'stand' to make your next move.`;
+      Computer's cards: ${printCardArray([compCard[0]])} and another secret card 🤭 <br>
+      Enter 'hit' or 'stand' to make your next move 🤩 `;
     };
   };
   
@@ -133,7 +133,9 @@ var main = function (input) {
   if (currentGameMode == 'Player move') {
 
     if (input !== 'hit' && input !== 'stand') {
-      return `Please enter 'hit' or 'stand' to continue the game.`;
+              return `Your cards: ${printCardArray(playerCard)}, summing to ${playerCardSum}. <br>
+              Computer's cards: ${printCardArray([compCard[0]])} and another secret card 🤭<br>
+              Enter 'hit' or 'stand' to make your next move 🤩`;
     }
 
     while (input === 'hit') {
@@ -151,20 +153,20 @@ var main = function (input) {
               playerCard[i].point = 1;
               playerCardSum = cardScore(playerCard);
               return `Your cards: ${printCardArray(playerCard)}, summing to ${playerCardSum}. <br>
-              Cmputer's cards: ${printCardArray(compCard)}, summing to ${compCardSum}. <br>
-              Enter 'hit' or 'stand' to make your next move.`;
+              Computer's cards: ${printCardArray([compCard[0]])} and another secret card 🤭 <br>
+              Enter 'hit' or 'stand' to make your next move 🤩`;
             };
           };
         };
         return `Your cards: ${printCardArray(playerCard)}, summing to ${playerCardSum}. <br>
-        Computer's cards: ${printCardArray(compCard)}, summing to ${compCardSum}. <br>
-        Enter 'hit' or 'stand' to make your next move.`;
+        Computer's cards: ${printCardArray([compCard[0]])} and another secret card 🤭 <br>
+        Enter 'hit' or 'stand' to make your next move 🤩`;
 
       // Score above 21, check if there are Aces
       } else if (playerCardSum >= 21) {
           return `Your cards: ${printCardArray(playerCard)}, summing to ${playerCardSum}. <br>
-          Computer's cards: ${printCardArray(compCard)}, summing to ${compCardSum}. <br>
-          You cannot hit another card with your current sum. <br>
+          Computer's cards: ${printCardArray([compCard[0]])} and another secret card 🤭 <br>
+          You cannot hit another card with your current sum 😳 <br>
           Please enter 'stand' to continue the game.`;
           // };
       };
@@ -201,19 +203,19 @@ var main = function (input) {
       if (playerCardSum < compCardSum && compCardSum <= 21) {
         return `Your cards: ${printCardArray(playerCard)}, summing to ${playerCardSum}. <br>
         Computer's cards: ${printCardArray(compCard)}, summing to ${compCardSum}. <br>
-        You lose! <br>
+        You lose! 😪 <br>
         Refresh for another game of Blackjack!`;
 
       } else if (playerCardSum > compCardSum) {
         return `Your cards: ${printCardArray(playerCard)}, summing to ${playerCardSum}. <br>
         Computer's cards: ${printCardArray(compCard)}, summing to ${compCardSum}. <br>
-        You win! <br>
+        You win! 👏🏻<br>
         Refresh for another game of Blackjack!`;
 
       } else if (playerCardSum == compCardSum) {
         return `Your cards: ${printCardArray(playerCard)}, summing to ${playerCardSum}. <br>
         Computer's cards: ${printCardArray(compCard)}, summing to ${compCardSum}. <br>
-        It's a draw! <br>
+        It's a draw! 😲<br>
         Refresh for another game of Blackjack!`;
       }
 
@@ -223,14 +225,14 @@ var main = function (input) {
       if (compCardSum <= 21) {
         return `Your cards: ${printCardArray(playerCard)}, summing to ${playerCardSum}. <br>
         Computer's cards: ${printCardArray(compCard)}, summing to ${compCardSum}. <br>
-        You lose! <br>
+        You lose! 😪<br>
         Refresh for another game of Blackjack!`;
       
       // Both > 21
       } else {
         return `Your cards: ${printCardArray(playerCard)}, summing to ${playerCardSum}. <br>
         Computer's cards: ${printCardArray(compCard)}, summing to ${compCardSum}. <br>
-        You both lose! <br>
+        You both lose! 😂<br>
         Refresh for another game of Blackjack!`;
       }
     };
