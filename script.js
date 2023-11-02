@@ -111,13 +111,13 @@ var main = function (input) {
 
     if (compCardSum == 21) {
       currentGameMode = 'Game over';
-      return `Computer's cards: ${printCardArray(playerCard)}. <br>
+      return `Computer's cards: ${printCardArray(compCard)}. <br>
       Computer won with a Blackjack! 😪<br>
       Refresh for another round!`;
 
     } else if (playerCardSum == 21) {
       currentGameMode = 'Game over';
-      return `Your cards: ${printCardArray(compCard)}. <br>
+      return `Your cards: ${printCardArray(playerCard)}. <br>
       You win with a Blackjack! 👏🏻<br>
       Refresh for another round!`
 
@@ -181,7 +181,7 @@ var main = function (input) {
       compCardSum = cardScore(compCard);
 
       // Accounting for Aces in Comp's Hand
-      if (compCardSum >= 21) {
+      if (compCardSum >= 17 && compCardSum < 21) {
         for (i = 0; i < compCard.length; i += 1){
           if (compCard[i].name == 'Ace'){
             compCard[i].point = 1;
@@ -206,12 +206,18 @@ var main = function (input) {
         You lose! 😪 <br>
         Refresh for another game of Blackjack!`;
 
-      } else if (playerCardSum > compCardSum) {
+      } else if (playerCardSum < compCardSum && compCardSum > 21) {
         return `Your cards: ${printCardArray(playerCard)}, summing to ${playerCardSum}. <br>
         Computer's cards: ${printCardArray(compCard)}, summing to ${compCardSum}. <br>
         You win! 👏🏻<br>
         Refresh for another game of Blackjack!`;
 
+      } else if (playerCardSum > compCardSum) {
+        return `Your cards: ${printCardArray(playerCard)}, summing to ${playerCardSum}. <br>
+        Computer's cards: ${printCardArray(compCard)}, summing to ${compCardSum}. <br>
+        You win! 👏🏻<br>
+        Refresh for another game of Blackjack!`;
+      
       } else if (playerCardSum == compCardSum) {
         return `Your cards: ${printCardArray(playerCard)}, summing to ${playerCardSum}. <br>
         Computer's cards: ${printCardArray(compCard)}, summing to ${compCardSum}. <br>
